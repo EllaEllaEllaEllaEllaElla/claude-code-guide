@@ -4,114 +4,43 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Getting Started with Claude Code</title>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;500;600&family=JetBrains+Mono&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono&display=swap" rel="stylesheet" />
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: #fff;
-      color: #1a1a1a;
-    }
+    body { font-family: 'Inter', sans-serif; background: #fff; color: #1a1a1a; }
 
-    /* ── STAR WARS CRAWL ── */
-    .crawl-section {
-      background: #000;
-      height: 100vh;
-      overflow: hidden;
+    /* ── NAV ── */
+    .course-nav {
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-end;
-      position: relative;
+      gap: 4px;
+      padding: 12px 28px;
+      border-bottom: 1px solid #eee;
+      max-width: 580px;
+      margin: 0 auto;
     }
 
-    .crawl-fade-top {
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 35%;
-      background: linear-gradient(to bottom, #000 40%, transparent);
-      z-index: 2;
-      pointer-events: none;
-    }
-
-    .crawl-fade-bottom {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 15%;
-      background: linear-gradient(to top, #000, transparent);
-      z-index: 2;
-      pointer-events: none;
-    }
-
-    .crawl-wrap {
-      width: 100%;
-      max-width: 600px;
-      padding: 0 32px;
-      perspective: 300px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .crawl-text {
-      transform-origin: 50% 100%;
-      transform: rotateX(25deg);
-      animation: crawl 28s linear forwards;
-      animation-delay: 0.5s;
-      opacity: 0;
-    }
-
-    @keyframes crawl {
-      0%   { opacity: 1; transform: rotateX(25deg) translateY(100%); }
-      100% { opacity: 1; transform: rotateX(25deg) translateY(-400%); }
-    }
-
-    .crawl-text p {
-      font-family: 'Press Start 2P', monospace;
-      font-size: clamp(10px, 2vw, 14px);
-      line-height: 2.2;
-      color: #d97757;
-      text-align: center;
-      margin-bottom: 28px;
-    }
-
-    .crawl-text .big {
-      font-size: clamp(14px, 3vw, 20px);
-      color: #fff;
-      margin-bottom: 36px;
-    }
-
-    .crawl-text .small {
-      font-size: clamp(8px, 1.5vw, 11px);
-      color: rgba(217,119,87,0.7);
-      line-height: 2.4;
-    }
-
-    .scroll-hint-crawl {
-      position: absolute;
-      bottom: 32px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 3;
-      color: rgba(255,255,255,0.25);
-      font-family: 'Inter', sans-serif;
+    .lesson {
+      text-decoration: none;
       font-size: 13px;
-      text-align: center;
-      animation: appear 1s ease 8s both;
+      font-weight: 500;
+      color: #aaa;
+      padding: 6px 12px;
+      border-radius: 20px;
+      transition: color 0.15s, background 0.15s;
     }
 
-    @keyframes appear { from { opacity: 0; } to { opacity: 1; } }
+    .lesson:hover { color: #444; background: #f5f5f5; }
+    .lesson.active { color: #d97757; background: #fff5f1; }
 
-    /* ── STEPS ── */
+    /* ── PAGE ── */
     .page {
       max-width: 580px;
       margin: 0 auto;
       padding: 80px 28px 100px;
     }
 
-    .page-header {
-      margin-bottom: 56px;
-    }
+    .page-header { margin-bottom: 56px; }
 
     .page-header h1 {
       font-size: 30px;
@@ -120,14 +49,10 @@
       margin-bottom: 8px;
     }
 
-    .page-header p {
-      color: #888;
-      font-size: 16px;
-    }
+    .page-header p { color: #888; font-size: 16px; }
 
-    .step {
-      margin-bottom: 48px;
-    }
+    /* ── STEPS ── */
+    .step { margin-bottom: 48px; }
 
     .step-head {
       display: flex;
@@ -150,10 +75,7 @@
       flex-shrink: 0;
     }
 
-    .step h2 {
-      font-size: 18px;
-      font-weight: 600;
-    }
+    .step h2 { font-size: 18px; font-weight: 600; }
 
     .step ol {
       list-style: none;
@@ -163,14 +85,12 @@
       gap: 10px;
     }
 
-    .step ol li {
-      font-size: 15px;
-      color: #444;
-      line-height: 1.6;
-    }
-
+    .step ol li { font-size: 15px; color: #444; line-height: 1.6; }
     .step ol li b { color: #1a1a1a; }
 
+    hr { border: none; border-top: 1px solid #eee; margin: 8px 0 48px; }
+
+    /* ── CODE BLOCK ── */
     .cmd {
       background: #1a1a1a;
       border-radius: 8px;
@@ -215,6 +135,7 @@
       color: #444;
     }
 
+    /* ── NOTE ── */
     .note {
       margin-left: 50px;
       margin-top: 12px;
@@ -229,36 +150,160 @@
 
     .note b { color: #1a1a1a; }
 
-    hr {
-      border: none;
-      border-top: 1px solid #eee;
-      margin: 8px 0 48px;
+    /* ── EXPLAINER CARD ── */
+    .explainer {
+      background: #f7f6f3;
+      border-radius: 12px;
+      padding: 20px 22px;
+      margin: 0 0 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
     }
 
-    /* ── DONE ── */
+    .explainer-title {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #aaa;
+      margin-bottom: 2px;
+    }
+
+    .explainer-row {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .explainer-icon {
+      font-size: 22px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .explainer-row h4 {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 3px;
+    }
+
+    .explainer-row p {
+      font-size: 14px;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    /* ── TABS ── */
+    .tabs-section {
+      margin-bottom: 48px;
+    }
+
+    .tabs-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+
+    .tabs-strip {
+      display: flex;
+      gap: 4px;
+      padding: 4px;
+      background: #f2f0ec;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      margin-left: 50px;
+    }
+
+    .tab-btn {
+      flex: 1;
+      background: none;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 7px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #888;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+      font-family: inherit;
+    }
+
+    .tab-btn.active {
+      background: #fff;
+      color: #1a1a1a;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    .tab-panel ol {
+      list-style: none;
+      padding-left: 50px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .tab-panel ol li { font-size: 15px; color: #444; line-height: 1.6; }
+    .tab-panel ol li b { color: #1a1a1a; }
+
+    /* ── DONE / BUILD ── */
     .done {
       background: #1a1a1a;
       border-radius: 16px;
       padding: 48px 36px;
       text-align: center;
       color: #fff;
+      position: relative;
+      overflow: hidden;
     }
 
-    .done h2 {
-      font-size: 22px;
+    .moon-banner {
+      background: rgba(217,119,87,0.12);
+      border: 1px solid rgba(217,119,87,0.2);
+      border-radius: 10px;
+      padding: 18px 20px;
+      margin-bottom: 28px;
+      text-align: center;
+    }
+
+    .moon-banner .moon-text {
+      font-size: 13px;
       font-weight: 600;
-      margin-bottom: 8px;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
     }
 
-    .done h2 span { color: #d97757; }
+    .moon-banner .moon-quote {
+      font-size: 18px;
+      font-weight: 600;
+      color: #fff;
+      line-height: 1.4;
+    }
 
-    .done p { color: rgba(255,255,255,0.4); font-size: 14px; margin-bottom: 24px; }
+    .moon-banner .moon-quote span { color: #d97757; }
+
+    .moon-emoji {
+      font-size: 32px;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .done h2 { font-size: 22px; font-weight: 600; margin-bottom: 8px; }
+    .done h2 span { color: #d97757; }
+    .done > p { color: rgba(255,255,255,0.4); font-size: 14px; margin-bottom: 20px; }
 
     .prompts {
       display: flex;
       flex-direction: column;
       gap: 8px;
       text-align: left;
+      margin-bottom: 28px;
     }
 
     .pill {
@@ -269,36 +314,13 @@
       color: rgba(255,255,255,0.65);
       display: flex;
       gap: 10px;
+      line-height: 1.5;
     }
 
     .pill::before { content: '>'; color: #d97757; flex-shrink: 0; }
 
-    /* ── NAV ── */
-    .course-nav {
-      display: flex;
-      gap: 4px;
-      padding: 12px 28px;
-      border-bottom: 1px solid #eee;
-      max-width: 580px;
-      margin: 0 auto;
-    }
-
-    .lesson {
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 500;
-      color: #aaa;
-      padding: 6px 12px;
-      border-radius: 20px;
-      transition: color 0.15s, background 0.15s;
-    }
-
-    .lesson:hover { color: #444; background: #f5f5f5; }
-    .lesson.active { color: #d97757; background: #fff5f1; }
-
     .next-btn {
       display: inline-block;
-      margin-top: 28px;
       text-decoration: none;
       background: #d97757;
       color: #fff;
@@ -310,24 +332,55 @@
     }
 
     .next-btn:hover { background: #c6613f; }
+
+    .permission-note {
+      background: rgba(255,255,255,0.05);
+      border-radius: 8px;
+      padding: 14px 16px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+      text-align: left;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .permission-note b { color: rgba(255,255,255,0.8); }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
   <nav class="course-nav">
     <a href="index.html" class="lesson active">1 · Claude Code</a>
     <a href="obsidian.html" class="lesson">2 · Obsidian</a>
     <a href="github.html" class="lesson">3 · GitHub</a>
   </nav>
 
-  <!-- INSTRUCTIONS -->
   <main class="page">
     <div class="page-header">
       <h1>Hi Doug! Let's get you set up.</h1>
-      <p>8 steps. No experience needed.</p>
+      <p>No experience needed.</p>
     </div>
 
+    <!-- EXPLAINER -->
+    <div class="explainer">
+      <div class="explainer-title">Two tools you'll hear about</div>
+      <div class="explainer-row">
+        <div class="explainer-icon">🖥️</div>
+        <div>
+          <h4>VS Code — your workspace</h4>
+          <p>VS Code is a code editor — think of it like Microsoft Word, but for building things. It's where you'll open your projects, see your files, and talk to Claude. This type of app is called an <b>IDE</b> (Integrated Development Environment) — a fancy name for "the place where you work on code."</p>
+        </div>
+      </div>
+      <div class="explainer-row">
+        <div class="explainer-icon">⬛</div>
+        <div>
+          <h4>Terminal — the command line</h4>
+          <p>Terminal is a window where you type instructions directly to your computer, no clicking required. It looks intimidating but you'll only use it twice in this whole guide — to install Claude Code and confirm it worked. After that, you do everything from inside VS Code.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 1 -->
     <div class="step">
       <div class="step-head">
         <div class="num">1</div>
@@ -342,13 +395,14 @@
 
     <hr>
 
+    <!-- STEP 2 -->
     <div class="step">
       <div class="step-head">
         <div class="num">2</div>
         <h2>Install Claude Code</h2>
       </div>
       <ol>
-        <li>Open Terminal — it's an app that comes with every Mac. Press <b>Cmd + Space</b> to open Spotlight (the search bar), type <b>Terminal</b>, and press Enter. A window with a blinking cursor will appear. That's it.</li>
+        <li>Open Terminal — press <b>Cmd + Space</b>, type <b>Terminal</b>, press Enter. A window with a blinking cursor appears.</li>
         <li>Paste this and press Enter:</li>
       </ol>
       <div class="cmd" style="margin-left:50px;">
@@ -357,12 +411,13 @@
         <button class="copy" onclick="cp(this,'curl -fsSL https://claude.ai/install.sh | bash')">copy</button>
       </div>
       <ol start="3" style="margin-top:6px;">
-        <li>Wait for it to finish — type <code>claude --version</code> to confirm</li>
+        <li>Wait for it to finish — type <code>claude --version</code> to confirm it worked</li>
       </ol>
     </div>
 
     <hr>
 
+    <!-- STEP 3 -->
     <div class="step">
       <div class="step-head">
         <div class="num">3</div>
@@ -371,7 +426,7 @@
       <ol>
         <li>In Terminal, type <code>claude</code> and press Enter</li>
         <li>A browser window will open — sign in with your Anthropic account</li>
-        <li>That's it. You won't need to do this again.</li>
+        <li>Done. You won't need to do this again.</li>
       </ol>
       <div class="note">
         <b>Heads up:</b> Claude Code requires a paid plan — Claude Pro at $20/month minimum. Free accounts won't work. Sign up at <b>claude.ai/upgrade</b>.
@@ -380,6 +435,7 @@
 
     <hr>
 
+    <!-- STEP 4 -->
     <div class="step">
       <div class="step-head">
         <div class="num">4</div>
@@ -395,6 +451,7 @@
 
     <hr>
 
+    <!-- STEP 5 -->
     <div class="step">
       <div class="step-head">
         <div class="num">5</div>
@@ -402,77 +459,95 @@
       </div>
       <ol>
         <li>Go to your Desktop and create a new folder called <b>projects</b></li>
-        <li>Every time you start something new, create a new folder inside <b>projects</b> for it — like <b>projects/birthday-card</b> or <b>projects/my-website</b>. One project, one folder.</li>
-        <li>Open VS Code, go to <b>File → Open Folder</b>, and select the folder you just made</li>
-        <li>Claude can now see everything inside that folder and work with it</li>
+        <li>Every time you start something new, make a new folder inside it — like <b>projects/birthday-card</b> or <b>projects/my-website</b>. One project, one folder.</li>
+        <li>To start working: open VS Code, go to <b>File → Open Folder</b>, and pick that project's folder</li>
+        <li>Claude can now see everything inside and get to work</li>
       </ol>
-      <div class="note">Think of opening a folder like telling Claude "this is the project we're working on." Always open the right folder before you start.</div>
+      <div class="note">Think of opening a folder like handing Claude the right notebook. Always open the right one before you start.</div>
     </div>
 
     <hr>
 
-    <div class="step">
-      <div class="step-head">
+    <!-- STEP 6 — TABBED: CLAUDE.md + progress.md -->
+    <div class="tabs-section">
+      <div class="tabs-header">
         <div class="num">6</div>
-        <h2>Make Your First Markdown File</h2>
+        <h2>Your First Files</h2>
       </div>
-      <ol>
-        <li>Inside <b>projects</b>, create a new folder called <b>ai-progress</b> and open it in VS Code</li>
-        <li>Click the <b>⚡ spark icon</b> to open Claude, then type:</li>
-      </ol>
-      <div class="cmd" style="margin-left:50px;">
-        <span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#f0eee6;flex:1;">create a file called progress.md where I can track what I've learned</span>
-        <button class="copy" onclick="cp(this,'create a file called progress.md where I can track what I\'ve learned')">copy</button>
+
+      <div class="tabs-strip">
+        <button class="tab-btn active" onclick="switchTab('claudemd')">CLAUDE.md</button>
+        <button class="tab-btn" onclick="switchTab('progressmd')">progress.md</button>
       </div>
-      <ol start="3" style="margin-top:6px;">
-        <li>Claude will create a <code>.md</code> file for you — a markdown file. It's a simple text format that any app can read, great for notes and lists.</li>
-        <li>Add your first entry: what you set up today</li>
-      </ol>
-      <div class="note">Markdown files are just text with light formatting — like using <code>#</code> for a heading or <code>-</code> for a bullet. You'll see them everywhere in coding projects.</div>
+
+      <div id="claudemd" class="tab-panel active">
+        <ol>
+          <li>Create a new folder inside <b>projects</b> for your first project and open it in VS Code</li>
+          <li>Click the <b>⚡ spark icon</b> to open Claude and type:</li>
+        </ol>
+        <div class="cmd" style="margin-left:50px;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#f0eee6;flex:1;">create a CLAUDE.md file that describes this project</span>
+          <button class="copy" onclick="cp(this,'create a CLAUDE.md file that describes this project')">copy</button>
+        </div>
+        <ol start="3" style="margin-top:6px;">
+          <li>Claude will make the file and fill it in — you don't need to do anything else</li>
+          <li>Do this at the start of every new project</li>
+        </ol>
+        <div class="note" style="margin-left:50px;">Claude reads this file automatically every time you open the project. It's how Claude remembers what you're building. Think of it as a sticky note you leave for Claude.</div>
+      </div>
+
+      <div id="progressmd" class="tab-panel">
+        <ol>
+          <li>Inside <b>projects</b>, create a folder called <b>ai-progress</b> and open it in VS Code</li>
+          <li>Click the <b>⚡ spark icon</b> and type:</li>
+        </ol>
+        <div class="cmd" style="margin-left:50px;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#f0eee6;flex:1;">create a file called progress.md where I can track what I've learned</span>
+          <button class="copy" onclick="cp(this,'create a file called progress.md where I can track what I\'ve learned')">copy</button>
+        </div>
+        <ol start="3" style="margin-top:6px;">
+          <li>Claude will create a <code>.md</code> (markdown) file — a simple text format, like a notes file that any app can read</li>
+          <li>Write your first entry: what you set up today</li>
+        </ol>
+        <div class="note" style="margin-left:50px;">Markdown is just plain text with light formatting — <code>#</code> makes a heading, <code>-</code> makes a bullet. That's most of what you need.</div>
+      </div>
     </div>
 
     <hr>
 
+    <!-- STEP 7 — BUILD -->
     <div class="step">
       <div class="step-head">
         <div class="num">7</div>
-        <h2>Set Up CLAUDE.md</h2>
-      </div>
-      <ol>
-        <li>For any project you work on, ask Claude to create a <code>CLAUDE.md</code> file in that folder</li>
-        <li>Type something like:</li>
-      </ol>
-      <div class="cmd" style="margin-left:50px;">
-        <span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#f0eee6;flex:1;">create a CLAUDE.md file that describes this project so you always remember what we're building</span>
-        <button class="copy" onclick="cp(this,'create a CLAUDE.md file that describes this project so you always remember what we\'re building')">copy</button>
-      </div>
-      <ol start="3" style="margin-top:6px;">
-        <li>Claude reads this file automatically every time you open the project — it's how Claude remembers what you're working on, what style you want, and what not to touch</li>
-        <li>Do this at the start of every new project</li>
-      </ol>
-      <div class="note">This is the #1 thing most beginners skip. The best Claude Code users always have a <code>CLAUDE.md</code>. It's the difference between Claude that forgets everything and Claude that feels like it actually knows your project.</div>
-    </div>
-
-    <hr>
-
-    <div class="step">
-      <div class="step-head">
-        <div class="num">8</div>
         <h2>Build Something</h2>
       </div>
       <ol>
-        <li>Create a new folder inside <b>projects</b> for your first project and open it in VS Code</li>
-        <li>Click the <b>⚡ spark icon</b> and ask Claude to create a <code>CLAUDE.md</code> first</li>
-        <li>Then just describe what you want — Claude does the rest</li>
+        <li>Create a new folder inside <b>projects</b>, name it after your project, and open it in VS Code</li>
+        <li>Click <b>⚡</b>, ask Claude to create a <code>CLAUDE.md</code>, then describe what you want to build</li>
+        <li>Claude will start working — it may ask you to click <b>Accept</b> a few times along the way. That's just Claude asking permission before it touches your files. Most of the time, just click yes.</li>
       </ol>
     </div>
 
+    <!-- DONE -->
     <div class="done">
-      <h2>You're all set, <span>Doug.</span></h2>
-      <p>Try this as your very first project:</p>
+      <div class="moon-banner">
+        <span class="moon-emoji">🤖🌕</span>
+        <div class="moon-text">a word from your instructor</div>
+        <div class="moon-quote">Who says the sky's the limit<br>when there are <span>robots on the moon?</span></div>
+      </div>
+
+      <h2>Try one of these, <span>Doug.</span></h2>
+      <p>Or come up with your own — this is your sandbox.</p>
+
       <div class="prompts">
         <div class="pill">make a beautiful late birthday card</div>
+        <div class="pill">make a tool that shows direct flight times between any two major US airports</div>
       </div>
+
+      <div class="permission-note">
+        <b>Reminder:</b> When Claude asks you to click Accept — that's normal. It's just double-checking before it makes any changes. You already told it what to do. Just say yes.
+      </div>
+
       <a href="obsidian.html" class="next-btn">Next: Obsidian →</a>
     </div>
 
@@ -488,6 +563,13 @@
       btn.textContent = 'copied!';
       btn.classList.add('ok');
       setTimeout(() => { btn.textContent = 'copy'; btn.classList.remove('ok'); }, 2000);
+    }
+
+    function switchTab(id) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      event.target.classList.add('active');
     }
   </script>
 
