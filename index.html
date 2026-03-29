@@ -325,7 +325,7 @@
   <main class="page">
     <div class="page-header">
       <h1>Hi Doug! Let's get you set up.</h1>
-      <p>5 steps. No experience needed.</p>
+      <p>8 steps. No experience needed.</p>
     </div>
 
     <div class="step">
@@ -398,12 +398,72 @@
     <div class="step">
       <div class="step-head">
         <div class="num">5</div>
-        <h2>Open a Folder and Start</h2>
+        <h2>Set Up Your Projects Folder</h2>
       </div>
       <ol>
-        <li>Go to <b>File → Open Folder</b> and pick any folder (or make a new one on your Desktop)</li>
-        <li>Click the <b>⚡ spark icon</b> in the top-right corner of the editor</li>
-        <li>Type what you want in plain English and press Enter</li>
+        <li>Go to your Desktop and create a new folder called <b>projects</b></li>
+        <li>Every time you start something new, create a new folder inside <b>projects</b> for it — like <b>projects/birthday-card</b> or <b>projects/my-website</b>. One project, one folder.</li>
+        <li>Open VS Code, go to <b>File → Open Folder</b>, and select the folder you just made</li>
+        <li>Claude can now see everything inside that folder and work with it</li>
+      </ol>
+      <div class="note">Think of opening a folder like telling Claude "this is the project we're working on." Always open the right folder before you start.</div>
+    </div>
+
+    <hr>
+
+    <div class="step">
+      <div class="step-head">
+        <div class="num">6</div>
+        <h2>Make Your First Markdown File</h2>
+      </div>
+      <ol>
+        <li>Inside <b>projects</b>, create a new folder called <b>ai-progress</b> and open it in VS Code</li>
+        <li>Click the <b>⚡ spark icon</b> to open Claude, then type:</li>
+      </ol>
+      <div class="cmd" style="margin-left:50px;">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#f0eee6;flex:1;">create a file called progress.md where I can track what I've learned</span>
+        <button class="copy" onclick="cp(this,'create a file called progress.md where I can track what I\'ve learned')">copy</button>
+      </div>
+      <ol start="3" style="margin-top:6px;">
+        <li>Claude will create a <code>.md</code> file for you — a markdown file. It's a simple text format that any app can read, great for notes and lists.</li>
+        <li>Add your first entry: what you set up today</li>
+      </ol>
+      <div class="note">Markdown files are just text with light formatting — like using <code>#</code> for a heading or <code>-</code> for a bullet. You'll see them everywhere in coding projects.</div>
+    </div>
+
+    <hr>
+
+    <div class="step">
+      <div class="step-head">
+        <div class="num">7</div>
+        <h2>Set Up CLAUDE.md</h2>
+      </div>
+      <ol>
+        <li>For any project you work on, ask Claude to create a <code>CLAUDE.md</code> file in that folder</li>
+        <li>Type something like:</li>
+      </ol>
+      <div class="cmd" style="margin-left:50px;">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#f0eee6;flex:1;">create a CLAUDE.md file that describes this project so you always remember what we're building</span>
+        <button class="copy" onclick="cp(this,'create a CLAUDE.md file that describes this project so you always remember what we\'re building')">copy</button>
+      </div>
+      <ol start="3" style="margin-top:6px;">
+        <li>Claude reads this file automatically every time you open the project — it's how Claude remembers what you're working on, what style you want, and what not to touch</li>
+        <li>Do this at the start of every new project</li>
+      </ol>
+      <div class="note">This is the #1 thing most beginners skip. The best Claude Code users always have a <code>CLAUDE.md</code>. It's the difference between Claude that forgets everything and Claude that feels like it actually knows your project.</div>
+    </div>
+
+    <hr>
+
+    <div class="step">
+      <div class="step-head">
+        <div class="num">8</div>
+        <h2>Build Something</h2>
+      </div>
+      <ol>
+        <li>Create a new folder inside <b>projects</b> for your first project and open it in VS Code</li>
+        <li>Click the <b>⚡ spark icon</b> and ask Claude to create a <code>CLAUDE.md</code> first</li>
+        <li>Then just describe what you want — Claude does the rest</li>
       </ol>
     </div>
 
@@ -411,7 +471,7 @@
       <h2>You're all set, <span>Doug.</span></h2>
       <p>Try this as your very first project:</p>
       <div class="prompts">
-        <div class="pill">make a beautiful late birthday card for my daughter</div>
+        <div class="pill">make a beautiful late birthday card</div>
       </div>
       <a href="obsidian.html" class="next-btn">Next: Obsidian →</a>
     </div>
