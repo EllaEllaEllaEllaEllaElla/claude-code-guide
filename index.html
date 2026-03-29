@@ -7,571 +7,171 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono&display=swap" rel="stylesheet" />
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
     body { font-family: 'Inter', sans-serif; background: #fff; color: #1a1a1a; }
 
-    /* ── NAV ── */
     .course-nav {
       display: flex;
       gap: 4px;
       padding: 12px 28px;
       border-bottom: 1px solid #eee;
-      max-width: 580px;
+      max-width: 680px;
       margin: 0 auto;
+      overflow-x: auto;
+      white-space: nowrap;
     }
 
-    .lesson {
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 500;
-      color: #aaa;
-      padding: 6px 12px;
-      border-radius: 20px;
-      transition: color 0.15s, background 0.15s;
-    }
-
+    .lesson { text-decoration: none; font-size: 13px; font-weight: 500; color: #aaa; padding: 6px 12px; border-radius: 20px; transition: color 0.15s, background 0.15s; flex-shrink: 0; }
     .lesson:hover { color: #444; background: #f5f5f5; }
     .lesson.active { color: #d97757; background: #fff5f1; }
 
-    /* ── PAGE ── */
-    .page {
-      max-width: 580px;
-      margin: 0 auto;
-      padding: 80px 28px 100px;
-    }
+    .page { max-width: 580px; margin: 0 auto; padding: 80px 28px 100px; }
 
     .page-header { margin-bottom: 56px; }
+    .page-header h1 { font-size: 32px; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 10px; }
+    .page-header p { color: #888; font-size: 16px; line-height: 1.6; }
 
-    .page-header h1 {
-      font-size: 30px;
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      margin-bottom: 8px;
-    }
-
-    .page-header p { color: #888; font-size: 16px; }
-
-    /* ── STEPS ── */
-    .step { margin-bottom: 48px; }
-
-    .step-head {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 16px;
-    }
-
-    .num {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: #d97757;
-      color: #fff;
-      font-weight: 600;
-      font-size: 15px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .step h2 { font-size: 18px; font-weight: 600; }
-
-    .step ol {
-      list-style: none;
-      padding-left: 50px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .step ol li { font-size: 15px; color: #444; line-height: 1.6; }
-    .step ol li b { color: #1a1a1a; }
-
-    hr { border: none; border-top: 1px solid #eee; margin: 8px 0 48px; }
-
-    /* ── CODE BLOCK ── */
-    .cmd {
-      background: #1a1a1a;
-      border-radius: 8px;
-      padding: 13px 16px;
-      margin: 12px 0 4px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .cmd span {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 13px;
-      color: #f0eee6;
-      flex: 1;
-      word-break: break-all;
-    }
-
-    .cmd .dollar { color: #d97757; flex-shrink: 0; }
-
-    .copy {
-      background: rgba(255,255,255,0.1);
-      border: none;
-      color: rgba(255,255,255,0.5);
-      padding: 5px 10px;
-      border-radius: 5px;
-      font-size: 12px;
-      cursor: pointer;
-      font-family: inherit;
-      flex-shrink: 0;
-    }
-
-    .copy:hover { background: rgba(255,255,255,0.18); color: #fff; }
-    .copy.ok { background: #2d9e6b; color: #fff; }
-
-    code {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 12px;
-      background: #f2f0ec;
-      padding: 2px 6px;
-      border-radius: 4px;
-      color: #444;
-    }
-
-    /* ── NOTE ── */
-    .note {
-      margin-left: 50px;
-      margin-top: 12px;
-      padding: 12px 14px;
-      background: #fff8f5;
-      border-left: 3px solid #d97757;
-      border-radius: 0 6px 6px 0;
-      font-size: 14px;
-      color: #666;
-      line-height: 1.6;
-    }
-
-    .note b { color: #1a1a1a; }
-
-    /* ── EXPLAINER CARD ── */
-    .explainer {
-      background: #f7f6f3;
-      border-radius: 12px;
-      padding: 20px 22px;
-      margin: 0 0 48px;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    .explainer-title {
+    /* VOCAB CARDS */
+    .vocab-title {
       font-size: 11px;
       font-weight: 600;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: #aaa;
-      margin-bottom: 2px;
-    }
-
-    .explainer-row {
-      display: flex;
-      gap: 14px;
-      align-items: flex-start;
-    }
-
-    .explainer-icon {
-      font-size: 22px;
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
-
-    .explainer-row h4 {
-      font-size: 15px;
-      font-weight: 600;
-      margin-bottom: 3px;
-    }
-
-    .explainer-row p {
-      font-size: 14px;
-      color: #666;
-      line-height: 1.6;
-    }
-
-    /* ── TABS ── */
-    .tabs-section {
-      margin-bottom: 48px;
-    }
-
-    .tabs-header {
-      display: flex;
-      align-items: center;
-      gap: 14px;
+      color: #bbb;
       margin-bottom: 16px;
     }
 
-    .tabs-strip {
-      display: flex;
-      gap: 4px;
-      padding: 4px;
-      background: #f2f0ec;
-      border-radius: 10px;
-      margin-bottom: 20px;
-      margin-left: 50px;
-    }
-
-    .tab-btn {
-      flex: 1;
-      background: none;
-      border: none;
-      padding: 8px 16px;
-      border-radius: 7px;
-      font-size: 14px;
-      font-weight: 500;
-      color: #888;
-      cursor: pointer;
-      transition: background 0.15s, color 0.15s;
-      font-family: inherit;
-    }
-
-    .tab-btn.active {
-      background: #fff;
-      color: #1a1a1a;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-    }
-
-    .tab-panel { display: none; }
-    .tab-panel.active { display: block; }
-
-    .tab-panel ol {
-      list-style: none;
-      padding-left: 50px;
+    .vocab-list {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 2px;
+      margin-bottom: 56px;
     }
 
-    .tab-panel ol li { font-size: 15px; color: #444; line-height: 1.6; }
-    .tab-panel ol li b { color: #1a1a1a; }
-
-    /* ── DONE / BUILD ── */
-    .done {
-      background: #1a1a1a;
-      border-radius: 16px;
-      padding: 48px 36px;
-      text-align: center;
-      color: #fff;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .moon-banner {
-      background: rgba(217,119,87,0.12);
-      border: 1px solid rgba(217,119,87,0.2);
+    .vocab-item {
+      display: flex;
+      gap: 0;
       border-radius: 10px;
-      padding: 18px 20px;
-      margin-bottom: 28px;
-      text-align: center;
+      overflow: hidden;
+      border: 1px solid #eee;
     }
 
-    .moon-banner .moon-text {
-      font-size: 13px;
+    .vocab-term {
+      background: #f7f6f3;
+      padding: 16px 18px;
+      font-size: 14px;
       font-weight: 600;
-      color: rgba(255,255,255,0.5);
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      margin-bottom: 4px;
-    }
-
-    .moon-banner .moon-quote {
-      font-size: 18px;
-      font-weight: 600;
-      color: #fff;
+      color: #1a1a1a;
+      min-width: 140px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
       line-height: 1.4;
     }
 
-    .moon-banner .moon-quote span { color: #d97757; }
+    .vocab-term .icon { font-size: 18px; flex-shrink: 0; }
 
-    .moon-emoji {
-      font-size: 32px;
-      margin-bottom: 10px;
-      display: block;
-    }
-
-    .done h2 { font-size: 22px; font-weight: 600; margin-bottom: 8px; }
-    .done h2 span { color: #d97757; }
-    .done > p { color: rgba(255,255,255,0.4); font-size: 14px; margin-bottom: 20px; }
-
-    .prompts {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      text-align: left;
-      margin-bottom: 28px;
-    }
-
-    .pill {
-      background: rgba(255,255,255,0.06);
-      border-radius: 8px;
-      padding: 11px 16px;
+    .vocab-def {
+      padding: 16px 18px;
       font-size: 14px;
-      color: rgba(255,255,255,0.65);
-      display: flex;
-      gap: 10px;
-      line-height: 1.5;
+      color: #555;
+      line-height: 1.6;
+      border-left: 1px solid #eee;
     }
 
-    .pill::before { content: '>'; color: #d97757; flex-shrink: 0; }
+    .vocab-def b { color: #1a1a1a; }
 
-    .next-btn {
+    /* START BUTTON */
+    .start-section { text-align: center; }
+
+    .start-section p {
+      color: #888;
+      font-size: 15px;
+      margin-bottom: 24px;
+    }
+
+    .start-btn {
       display: inline-block;
       text-decoration: none;
       background: #d97757;
       color: #fff;
-      padding: 12px 24px;
-      border-radius: 8px;
-      font-size: 15px;
-      font-weight: 500;
+      padding: 14px 32px;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 600;
       transition: background 0.15s;
     }
 
-    .next-btn:hover { background: #c6613f; }
-
-    .permission-note {
-      background: rgba(255,255,255,0.05);
-      border-radius: 8px;
-      padding: 14px 16px;
-      font-size: 13px;
-      color: rgba(255,255,255,0.5);
-      text-align: left;
-      margin-bottom: 20px;
-      line-height: 1.6;
-    }
-
-    .permission-note b { color: rgba(255,255,255,0.8); }
+    .start-btn:hover { background: #c6613f; }
   </style>
 </head>
 <body>
 
   <nav class="course-nav">
-    <a href="index.html" class="lesson active">1 · Claude Code</a>
+    <a href="index.html" class="lesson active">Start Here</a>
+    <a href="claude-code.html" class="lesson">1 · Claude Code</a>
     <a href="obsidian.html" class="lesson">2 · Obsidian</a>
     <a href="github.html" class="lesson">3 · GitHub</a>
+    <a href="projects.html" class="lesson">4 · Projects</a>
+    <a href="files.html" class="lesson">5 · First Files</a>
+    <a href="build.html" class="lesson">6 · Build</a>
   </nav>
 
   <main class="page">
     <div class="page-header">
-      <h1>Hi Doug! Let's get you set up.</h1>
-      <p>No experience needed.</p>
+      <h1>Hi Doug! Before we start —</h1>
+      <p>Here are the tools and terms you'll hear about. No need to memorize anything, just skim so nothing catches you off guard.</p>
     </div>
 
-    <!-- EXPLAINER -->
-    <div class="explainer">
-      <div class="explainer-title">Two tools you'll hear about</div>
-      <div class="explainer-row">
-        <div class="explainer-icon">🖥️</div>
-        <div>
-          <h4>VS Code — your workspace</h4>
-          <p>VS Code is a code editor — think of it like Microsoft Word, but for building things. It's where you'll open your projects, see your files, and talk to Claude. This type of app is called an <b>IDE</b> (Integrated Development Environment) — a fancy name for "the place where you work on code."</p>
-        </div>
+    <div class="vocab-title">The tools</div>
+    <div class="vocab-list">
+      <div class="vocab-item">
+        <div class="vocab-term"><span class="icon">🤖</span>Claude Code</div>
+        <div class="vocab-def">The AI you'll be talking to. It reads your files, writes code, and builds things — all from plain English instructions. Made by Anthropic.</div>
       </div>
-      <div class="explainer-row">
-        <div class="explainer-icon">⬛</div>
-        <div>
-          <h4>Terminal — the command line</h4>
-          <p>Terminal is a window where you type instructions directly to your computer, no clicking required. It looks intimidating but you'll only use it twice in this whole guide — to install Claude Code and confirm it worked. After that, you do everything from inside VS Code.</p>
-        </div>
+      <div class="vocab-item">
+        <div class="vocab-term"><span class="icon">🖥️</span>VS Code</div>
+        <div class="vocab-def">Your workspace. A free app where you open projects, see your files, and chat with Claude. This type of app is called an <b>IDE</b> (Integrated Development Environment) — basically "the place where you work on code."</div>
       </div>
-    </div>
-
-    <!-- STEP 1 -->
-    <div class="step">
-      <div class="step-head">
-        <div class="num">1</div>
-        <h2>Install VS Code</h2>
+      <div class="vocab-item">
+        <div class="vocab-term"><span class="icon">📝</span>Obsidian</div>
+        <div class="vocab-def">A note-taking app. Great for keeping track of what you've learned, ideas, and progress. Stores everything as simple text files on your computer.</div>
       </div>
-      <ol>
-        <li>Go to <b>code.visualstudio.com</b> and download VS Code for Mac</li>
-        <li>Open the download — drag <b>Visual Studio Code</b> into your Applications folder</li>
-        <li>Open it (right-click → Open the first time)</li>
-      </ol>
-    </div>
-
-    <hr>
-
-    <!-- STEP 2 -->
-    <div class="step">
-      <div class="step-head">
-        <div class="num">2</div>
-        <h2>Install Claude Code</h2>
+      <div class="vocab-item">
+        <div class="vocab-term"><span class="icon">🐙</span>GitHub</div>
+        <div class="vocab-def">Where your code lives online. Think of it like Google Drive but for projects — it backs up your work and keeps a history of every change you've made.</div>
       </div>
-      <ol>
-        <li>Open Terminal — press <b>Cmd + Space</b>, type <b>Terminal</b>, press Enter. A window with a blinking cursor appears.</li>
-        <li>Paste this and press Enter:</li>
-      </ol>
-      <div class="cmd" style="margin-left:50px;">
-        <span class="dollar">$</span>
-        <span>curl -fsSL https://claude.ai/install.sh | bash</span>
-        <button class="copy" onclick="cp(this,'curl -fsSL https://claude.ai/install.sh | bash')">copy</button>
-      </div>
-      <ol start="3" style="margin-top:6px;">
-        <li>Wait for it to finish — type <code>claude --version</code> to confirm it worked</li>
-      </ol>
-    </div>
-
-    <hr>
-
-    <!-- STEP 3 -->
-    <div class="step">
-      <div class="step-head">
-        <div class="num">3</div>
-        <h2>Log In</h2>
-      </div>
-      <ol>
-        <li>In Terminal, type <code>claude</code> and press Enter</li>
-        <li>A browser window will open — sign in with your Anthropic account</li>
-        <li>Done. You won't need to do this again.</li>
-      </ol>
-      <div class="note">
-        <b>Heads up:</b> Claude Code requires a paid plan — Claude Pro at $20/month minimum. Free accounts won't work. Sign up at <b>claude.ai/upgrade</b>.
+      <div class="vocab-item">
+        <div class="vocab-term"><span class="icon">⬛</span>Terminal</div>
+        <div class="vocab-def">A window where you type instructions directly to your Mac. Looks scary, isn't. You'll use it exactly twice in this course — to install Claude Code. After that, forget it exists.</div>
       </div>
     </div>
 
-    <hr>
-
-    <!-- STEP 4 -->
-    <div class="step">
-      <div class="step-head">
-        <div class="num">4</div>
-        <h2>Install the VS Code Extension</h2>
+    <div class="vocab-title">Words you'll see</div>
+    <div class="vocab-list" style="margin-bottom: 56px;">
+      <div class="vocab-item">
+        <div class="vocab-term"><span class="icon">📁</span>Folder / Directory</div>
+        <div class="vocab-def">Same thing. A folder on your computer. Every project lives in its own folder.</div>
       </div>
-      <ol>
-        <li>Open VS Code and press <b>Cmd + Shift + X</b></li>
-        <li>Search for <code>Claude Code</code></li>
-        <li>Install the one by <b>Anthropic</b> — double-check the publisher name, there are fakes</li>
-        <li>Restart VS Code if it asks</li>
-      </ol>
-    </div>
-
-    <hr>
-
-    <!-- STEP 5 -->
-    <div class="step">
-      <div class="step-head">
-        <div class="num">5</div>
-        <h2>Set Up Your Projects Folder</h2>
+      <div class="vocab-item">
+        <div class="vocab-term"><span class="icon">📄</span>Markdown (.md)</div>
+        <div class="vocab-def">A simple text format used everywhere in coding. Just plain writing, with <b>#</b> for headings and <b>-</b> for bullets. Claude uses it for notes and docs.</div>
       </div>
-      <ol>
-        <li>Go to your Desktop and create a new folder called <b>projects</b></li>
-        <li>Every time you start something new, make a new folder inside it — like <b>projects/birthday-card</b> or <b>projects/my-website</b>. One project, one folder.</li>
-        <li>To start working: open VS Code, go to <b>File → Open Folder</b>, and pick that project's folder</li>
-        <li>Claude can now see everything inside and get to work</li>
-      </ol>
-      <div class="note">Think of opening a folder like handing Claude the right notebook. Always open the right one before you start.</div>
-    </div>
-
-    <hr>
-
-    <!-- STEP 6 — TABBED: CLAUDE.md + progress.md -->
-    <div class="tabs-section">
-      <div class="tabs-header">
-        <div class="num">6</div>
-        <h2>Your First Files</h2>
+      <div class="vocab-item">
+        <div class="vocab-term"><span class="icon">🗒️</span>CLAUDE.md</div>
+        <div class="vocab-def">A special file you put in every project. Claude reads it automatically — it's how Claude remembers what you're building so you don't have to re-explain every time.</div>
       </div>
-
-      <div class="tabs-strip">
-        <button class="tab-btn active" onclick="switchTab('claudemd')">CLAUDE.md</button>
-        <button class="tab-btn" onclick="switchTab('progressmd')">progress.md</button>
-      </div>
-
-      <div id="claudemd" class="tab-panel active">
-        <ol>
-          <li>Create a new folder inside <b>projects</b> for your first project and open it in VS Code</li>
-          <li>Click the <b>⚡ spark icon</b> to open Claude and type:</li>
-        </ol>
-        <div class="cmd" style="margin-left:50px;">
-          <span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#f0eee6;flex:1;">create a CLAUDE.md file that describes this project</span>
-          <button class="copy" onclick="cp(this,'create a CLAUDE.md file that describes this project')">copy</button>
-        </div>
-        <ol start="3" style="margin-top:6px;">
-          <li>Claude will make the file and fill it in — you don't need to do anything else</li>
-          <li>Do this at the start of every new project</li>
-        </ol>
-        <div class="note" style="margin-left:50px;">Claude reads this file automatically every time you open the project. It's how Claude remembers what you're building. Think of it as a sticky note you leave for Claude.</div>
-      </div>
-
-      <div id="progressmd" class="tab-panel">
-        <ol>
-          <li>Inside <b>projects</b>, create a folder called <b>ai-progress</b> and open it in VS Code</li>
-          <li>Click the <b>⚡ spark icon</b> and type:</li>
-        </ol>
-        <div class="cmd" style="margin-left:50px;">
-          <span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#f0eee6;flex:1;">create a file called progress.md where I can track what I've learned</span>
-          <button class="copy" onclick="cp(this,'create a file called progress.md where I can track what I\'ve learned')">copy</button>
-        </div>
-        <ol start="3" style="margin-top:6px;">
-          <li>Claude will create a <code>.md</code> (markdown) file — a simple text format, like a notes file that any app can read</li>
-          <li>Write your first entry: what you set up today</li>
-        </ol>
-        <div class="note" style="margin-left:50px;">Markdown is just plain text with light formatting — <code>#</code> makes a heading, <code>-</code> makes a bullet. That's most of what you need.</div>
+      <div class="vocab-item">
+        <div class="vocab-term"><span class="icon">✅</span>Accept / Approve</div>
+        <div class="vocab-def">Claude asks before changing your files. You'll click this a lot. It's normal — just say yes.</div>
       </div>
     </div>
 
-    <hr>
-
-    <!-- STEP 7 — BUILD -->
-    <div class="step">
-      <div class="step-head">
-        <div class="num">7</div>
-        <h2>Build Something</h2>
-      </div>
-      <ol>
-        <li>Create a new folder inside <b>projects</b>, name it after your project, and open it in VS Code</li>
-        <li>Click <b>⚡</b>, ask Claude to create a <code>CLAUDE.md</code>, then describe what you want to build</li>
-        <li>Claude will start working — it may ask you to click <b>Accept</b> a few times along the way. That's just Claude asking permission before it touches your files. Most of the time, just click yes.</li>
-      </ol>
-    </div>
-
-    <!-- DONE -->
-    <div class="done">
-      <div class="moon-banner">
-        <span class="moon-emoji">🤖🌕</span>
-        <div class="moon-text">a word from your instructor</div>
-        <div class="moon-quote">Who says the sky's the limit<br>when there are <span>robots on the moon?</span></div>
-      </div>
-
-      <h2>Try one of these, <span>Doug.</span></h2>
-      <p>Or come up with your own — this is your sandbox.</p>
-
-      <div class="prompts">
-        <div class="pill">make a beautiful late birthday card</div>
-        <div class="pill">make a tool that shows direct flight times between any two major US airports</div>
-      </div>
-
-      <div class="permission-note">
-        <b>Reminder:</b> When Claude asks you to click Accept — that's normal. It's just double-checking before it makes any changes. You already told it what to do. Just say yes.
-      </div>
-
-      <a href="obsidian.html" class="next-btn">Next: Obsidian →</a>
+    <div class="start-section">
+      <p>That's all the vocab. Let's install things.</p>
+      <a href="claude-code.html" class="start-btn">Start → Install Claude Code</a>
     </div>
 
   </main>
-
-  <script>
-    function cp(btn, text) {
-      navigator.clipboard.writeText(text).catch(() => {
-        const t = document.createElement('textarea');
-        t.value = text; document.body.appendChild(t); t.select();
-        document.execCommand('copy'); document.body.removeChild(t);
-      });
-      btn.textContent = 'copied!';
-      btn.classList.add('ok');
-      setTimeout(() => { btn.textContent = 'copy'; btn.classList.remove('ok'); }, 2000);
-    }
-
-    function switchTab(id) {
-      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
-      event.target.classList.add('active');
-    }
-  </script>
 
 </body>
 </html>

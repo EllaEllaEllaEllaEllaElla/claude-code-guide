@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Build Something</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: #fff; color: #1a1a1a; }
+
+    .course-nav {
+      display: flex;
+      gap: 4px;
+      padding: 12px 28px;
+      border-bottom: 1px solid #eee;
+      max-width: 680px;
+      margin: 0 auto;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+
+    .lesson { text-decoration: none; font-size: 13px; font-weight: 500; color: #aaa; padding: 6px 12px; border-radius: 20px; transition: color 0.15s, background 0.15s; flex-shrink: 0; }
+    .lesson:hover { color: #444; background: #f5f5f5; }
+    .lesson.active { color: #d97757; background: #fff5f1; }
+
+    .page { max-width: 580px; margin: 0 auto; padding: 80px 28px 100px; }
+    .page-header { margin-bottom: 56px; }
+    .page-header h1 { font-size: 30px; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 8px; }
+    .page-header p { color: #888; font-size: 16px; }
+
+    .step { margin-bottom: 48px; }
+    .step-head { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+    .num { width: 36px; height: 36px; border-radius: 50%; background: #d97757; color: #fff; font-weight: 600; font-size: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .step h2 { font-size: 18px; font-weight: 600; }
+    .step ol { list-style: none; padding-left: 50px; display: flex; flex-direction: column; gap: 10px; }
+    .step ol li { font-size: 15px; color: #444; line-height: 1.6; }
+    .step ol li b { color: #1a1a1a; }
+
+    code { font-family: 'JetBrains Mono', monospace; font-size: 12px; background: #f2f0ec; padding: 2px 6px; border-radius: 4px; color: #444; }
+
+    .note { margin-left: 50px; margin-top: 12px; padding: 12px 14px; background: #fff8f5; border-left: 3px solid #d97757; border-radius: 0 6px 6px 0; font-size: 14px; color: #666; line-height: 1.6; }
+
+    /* MOON BANNER */
+    .moon-banner {
+      background: #1a1a1a;
+      border-radius: 16px;
+      padding: 40px 36px;
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .moon-emoji { font-size: 40px; display: block; margin-bottom: 14px; }
+
+    .moon-sub {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 10px;
+    }
+
+    .moon-quote {
+      font-size: 20px;
+      font-weight: 600;
+      color: #fff;
+      line-height: 1.45;
+    }
+
+    .moon-quote span { color: #d97757; }
+
+    /* PROMPTS */
+    .prompts-section h3 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 14px;
+      color: #1a1a1a;
+    }
+
+    .prompts {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 40px;
+    }
+
+    .pill {
+      background: #f7f6f3;
+      border-radius: 8px;
+      padding: 13px 16px;
+      font-size: 14px;
+      color: #444;
+      display: flex;
+      gap: 10px;
+      line-height: 1.5;
+    }
+
+    .pill::before { content: '>'; color: #d97757; flex-shrink: 0; font-weight: 600; }
+
+    .done { background: #1a1a1a; border-radius: 16px; padding: 40px 36px; text-align: center; color: #fff; }
+    .done p { color: rgba(255,255,255,0.4); font-size: 14px; margin-bottom: 20px; line-height: 1.6; }
+    .permission-note { background: rgba(255,255,255,0.06); border-radius: 8px; padding: 14px 16px; font-size: 13px; color: rgba(255,255,255,0.5); text-align: left; line-height: 1.6; }
+    .permission-note b { color: rgba(255,255,255,0.8); }
+  </style>
+</head>
+<body>
+
+  <nav class="course-nav">
+    <a href="index.html" class="lesson">1 · Claude Code</a>
+    <a href="obsidian.html" class="lesson">2 · Obsidian</a>
+    <a href="github.html" class="lesson">3 · GitHub</a>
+    <a href="projects.html" class="lesson">4 · Projects</a>
+    <a href="files.html" class="lesson">5 · First Files</a>
+    <a href="build.html" class="lesson active">6 · Build</a>
+  </nav>
+
+  <main class="page">
+    <div class="page-header">
+      <h1>Build Something</h1>
+      <p>You're ready. Here's how to actually do it.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-head">
+        <div class="num">1</div>
+        <h2>Start every project the same way</h2>
+      </div>
+      <ol>
+        <li>Create a new folder inside <b>projects</b> and name it after your project</li>
+        <li>Open VS Code → <b>File → Open Folder</b> → pick that folder</li>
+        <li>Click <b>⚡</b> to open Claude and ask it to create a <code>CLAUDE.md</code></li>
+        <li>Then describe what you want to build — Claude does the rest</li>
+      </ol>
+      <div class="note">Claude will ask you to click <b>Accept</b> a bunch of times. That's just it asking permission before touching your files. You already told it what to do — just say yes.</div>
+    </div>
+
+    <div class="moon-banner">
+      <span class="moon-emoji">🤖🌕</span>
+      <div class="moon-sub">a word of encouragement</div>
+      <div class="moon-quote">Who says the sky's the limit<br>when there are <span>robots on the moon?</span></div>
+    </div>
+
+    <div class="prompts-section">
+      <h3>Try one of these — or come up with your own:</h3>
+      <div class="prompts">
+        <div class="pill">make a beautiful late birthday card</div>
+        <div class="pill">make a tool that shows direct flight times between any two major US airports</div>
+        <div class="pill">make something you've always wanted to exist</div>
+      </div>
+    </div>
+
+    <div class="done">
+      <div class="permission-note">
+        <b>One last thing:</b> When Claude asks you to click Accept or Yes — that's completely normal. It happens a lot. It's just Claude double-checking before making any changes. You already told it what to do. Keep clicking yes.
+      </div>
+    </div>
+
+  </main>
+
+</body>
+</html>

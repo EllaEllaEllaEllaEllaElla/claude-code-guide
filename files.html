@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your First Files</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: #fff; color: #1a1a1a; }
+
+    .course-nav {
+      display: flex;
+      gap: 4px;
+      padding: 12px 28px;
+      border-bottom: 1px solid #eee;
+      max-width: 680px;
+      margin: 0 auto;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+
+    .lesson { text-decoration: none; font-size: 13px; font-weight: 500; color: #aaa; padding: 6px 12px; border-radius: 20px; transition: color 0.15s, background 0.15s; flex-shrink: 0; }
+    .lesson:hover { color: #444; background: #f5f5f5; }
+    .lesson.active { color: #d97757; background: #fff5f1; }
+
+    .page { max-width: 580px; margin: 0 auto; padding: 80px 28px 100px; }
+    .page-header { margin-bottom: 56px; }
+    .page-header h1 { font-size: 30px; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 8px; }
+    .page-header p { color: #888; font-size: 16px; }
+
+    .step { margin-bottom: 48px; }
+    .step-head { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+    .num { width: 36px; height: 36px; border-radius: 50%; background: #d97757; color: #fff; font-weight: 600; font-size: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .step h2 { font-size: 18px; font-weight: 600; }
+    .step ol { list-style: none; padding-left: 50px; display: flex; flex-direction: column; gap: 10px; }
+    .step ol li { font-size: 15px; color: #444; line-height: 1.6; }
+    .step ol li b { color: #1a1a1a; }
+
+    hr { border: none; border-top: 1px solid #eee; margin: 8px 0 48px; }
+
+    .cmd { background: #1a1a1a; border-radius: 8px; padding: 13px 16px; margin: 12px 0 4px; display: flex; align-items: center; gap: 10px; }
+    .cmd span { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #f0eee6; flex: 1; word-break: break-all; }
+    .copy { background: rgba(255,255,255,0.1); border: none; color: rgba(255,255,255,0.5); padding: 5px 10px; border-radius: 5px; font-size: 12px; cursor: pointer; font-family: inherit; flex-shrink: 0; }
+    .copy:hover { background: rgba(255,255,255,0.18); color: #fff; }
+    .copy.ok { background: #2d9e6b; color: #fff; }
+
+    code { font-family: 'JetBrains Mono', monospace; font-size: 12px; background: #f2f0ec; padding: 2px 6px; border-radius: 4px; color: #444; }
+
+    .note { margin-left: 50px; margin-top: 12px; padding: 12px 14px; background: #fff8f5; border-left: 3px solid #d97757; border-radius: 0 6px 6px 0; font-size: 14px; color: #666; line-height: 1.6; }
+    .note b { color: #1a1a1a; }
+
+    .done { background: #1a1a1a; border-radius: 16px; padding: 48px 36px; text-align: center; color: #fff; }
+    .done h2 { font-size: 22px; font-weight: 600; margin-bottom: 8px; }
+    .done h2 span { color: #d97757; }
+    .done p { color: rgba(255,255,255,0.4); font-size: 14px; margin-bottom: 28px; }
+    .nav-btns { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+    .btn { display: inline-block; text-decoration: none; padding: 12px 24px; border-radius: 8px; font-size: 15px; font-weight: 500; transition: background 0.15s; }
+    .btn-primary { background: #d97757; color: #fff; }
+    .btn-primary:hover { background: #c6613f; }
+    .btn-ghost { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.6); }
+    .btn-ghost:hover { background: rgba(255,255,255,0.14); color: #fff; }
+  </style>
+</head>
+<body>
+
+  <nav class="course-nav">
+    <a href="index.html" class="lesson">1 · Claude Code</a>
+    <a href="obsidian.html" class="lesson">2 · Obsidian</a>
+    <a href="github.html" class="lesson">3 · GitHub</a>
+    <a href="projects.html" class="lesson">4 · Projects</a>
+    <a href="files.html" class="lesson active">5 · First Files</a>
+    <a href="build.html" class="lesson">6 · Build</a>
+  </nav>
+
+  <main class="page">
+    <div class="page-header">
+      <h1>Your First Files</h1>
+      <p>Two files every project should have.</p>
+    </div>
+
+    <!-- CLAUDE.md -->
+    <div class="step">
+      <div class="step-head">
+        <div class="num">1</div>
+        <h2>CLAUDE.md — Claude's sticky note</h2>
+      </div>
+      <ol>
+        <li>Open any project folder in VS Code</li>
+        <li>Click the <b>⚡ spark icon</b> to open Claude and type:</li>
+      </ol>
+      <div class="cmd" style="margin-left:50px;">
+        <span>create a CLAUDE.md file that describes this project</span>
+        <button class="copy" onclick="cp(this,'create a CLAUDE.md file that describes this project')">copy</button>
+      </div>
+      <ol start="3" style="margin-top:6px;">
+        <li>Claude will write the file automatically — you don't need to touch it</li>
+        <li>Do this at the start of every new project</li>
+      </ol>
+      <div class="note">Claude reads <code>CLAUDE.md</code> every time you open the project. It's how it remembers what you're building, what style you like, and what not to change. This is the #1 thing beginners skip — don't skip it.</div>
+    </div>
+
+    <hr>
+
+    <!-- progress.md -->
+    <div class="step">
+      <div class="step-head">
+        <div class="num">2</div>
+        <h2>progress.md — your learning log</h2>
+      </div>
+      <ol>
+        <li>Inside <b>projects</b>, create a folder called <b>ai-progress</b> and open it in VS Code</li>
+        <li>Click <b>⚡</b> and type:</li>
+      </ol>
+      <div class="cmd" style="margin-left:50px;">
+        <span>create a file called progress.md where I can track what I've learned</span>
+        <button class="copy" onclick="cp(this,`create a file called progress.md where I can track what I've learned`)">copy</button>
+      </div>
+      <ol start="3" style="margin-top:6px;">
+        <li>Add your first entry: what you set up today</li>
+      </ol>
+      <div class="note">A <code>.md</code> file is called markdown — it's plain text with light formatting. <code>#</code> makes a heading, <code>-</code> makes a bullet. That's really all you need to know.</div>
+    </div>
+
+    <div class="done">
+      <h2>You know the <span>system.</span></h2>
+      <p>Open folder → make CLAUDE.md → build. Every time.</p>
+      <div class="nav-btns">
+        <a href="projects.html" class="btn btn-ghost">← Projects</a>
+        <a href="build.html" class="btn btn-primary">Next: Build →</a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function cp(btn, text) {
+      navigator.clipboard.writeText(text).catch(() => {
+        const t = document.createElement('textarea');
+        t.value = text; document.body.appendChild(t); t.select();
+        document.execCommand('copy'); document.body.removeChild(t);
+      });
+      btn.textContent = 'copied!';
+      btn.classList.add('ok');
+      setTimeout(() => { btn.textContent = 'copy'; btn.classList.remove('ok'); }, 2000);
+    }
+  </script>
+
+</body>
+</html>

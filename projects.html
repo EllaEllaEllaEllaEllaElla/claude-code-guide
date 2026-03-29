@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects Folder</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: #fff; color: #1a1a1a; }
+
+    .course-nav {
+      display: flex;
+      gap: 4px;
+      padding: 12px 28px;
+      border-bottom: 1px solid #eee;
+      max-width: 680px;
+      margin: 0 auto;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+
+    .lesson {
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      color: #aaa;
+      padding: 6px 12px;
+      border-radius: 20px;
+      transition: color 0.15s, background 0.15s;
+      flex-shrink: 0;
+    }
+
+    .lesson:hover { color: #444; background: #f5f5f5; }
+    .lesson.active { color: #d97757; background: #fff5f1; }
+
+    .page { max-width: 580px; margin: 0 auto; padding: 80px 28px 100px; }
+    .page-header { margin-bottom: 56px; }
+    .page-header h1 { font-size: 30px; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 8px; }
+    .page-header p { color: #888; font-size: 16px; }
+
+    .step { margin-bottom: 48px; }
+    .step-head { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+    .num { width: 36px; height: 36px; border-radius: 50%; background: #d97757; color: #fff; font-weight: 600; font-size: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .step h2 { font-size: 18px; font-weight: 600; }
+    .step ol { list-style: none; padding-left: 50px; display: flex; flex-direction: column; gap: 10px; }
+    .step ol li { font-size: 15px; color: #444; line-height: 1.6; }
+    .step ol li b { color: #1a1a1a; }
+
+    hr { border: none; border-top: 1px solid #eee; margin: 8px 0 48px; }
+
+    .note { margin-left: 50px; margin-top: 12px; padding: 12px 14px; background: #fff8f5; border-left: 3px solid #d97757; border-radius: 0 6px 6px 0; font-size: 14px; color: #666; line-height: 1.6; }
+    .note b { color: #1a1a1a; }
+
+    .done { background: #1a1a1a; border-radius: 16px; padding: 48px 36px; text-align: center; color: #fff; }
+    .done h2 { font-size: 22px; font-weight: 600; margin-bottom: 8px; }
+    .done h2 span { color: #d97757; }
+    .done p { color: rgba(255,255,255,0.4); font-size: 14px; margin-bottom: 28px; }
+    .nav-btns { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+    .btn { display: inline-block; text-decoration: none; padding: 12px 24px; border-radius: 8px; font-size: 15px; font-weight: 500; transition: background 0.15s; }
+    .btn-primary { background: #d97757; color: #fff; }
+    .btn-primary:hover { background: #c6613f; }
+    .btn-ghost { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.6); }
+    .btn-ghost:hover { background: rgba(255,255,255,0.14); color: #fff; }
+  </style>
+</head>
+<body>
+
+  <nav class="course-nav">
+    <a href="index.html" class="lesson">1 · Claude Code</a>
+    <a href="obsidian.html" class="lesson">2 · Obsidian</a>
+    <a href="github.html" class="lesson">3 · GitHub</a>
+    <a href="projects.html" class="lesson active">4 · Projects</a>
+    <a href="files.html" class="lesson">5 · First Files</a>
+    <a href="build.html" class="lesson">6 · Build</a>
+  </nav>
+
+  <main class="page">
+    <div class="page-header">
+      <h1>Set Up Your Projects Folder</h1>
+      <p>One place for everything you build.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-head">
+        <div class="num">1</div>
+        <h2>Create the Folder</h2>
+      </div>
+      <ol>
+        <li>Go to your Desktop and create a new folder called <b>projects</b></li>
+        <li>Every time you start something new, make a new folder inside it — like <b>projects/birthday-card</b> or <b>projects/my-website</b></li>
+        <li>One project, one folder. Always.</li>
+      </ol>
+    </div>
+
+    <hr>
+
+    <div class="step">
+      <div class="step-head">
+        <div class="num">2</div>
+        <h2>Open a Project in VS Code</h2>
+      </div>
+      <ol>
+        <li>Open VS Code</li>
+        <li>Go to <b>File → Open Folder</b></li>
+        <li>Select the folder you want to work on</li>
+        <li>Claude can now see everything inside and get to work</li>
+      </ol>
+      <div class="note">Think of opening a folder like handing Claude the right notebook. Always open the right one before you start.</div>
+    </div>
+
+    <div class="done">
+      <h2>That's <span>it.</span></h2>
+      <p>Simple system. You'll use it every single time.</p>
+      <div class="nav-btns">
+        <a href="github.html" class="btn btn-ghost">← GitHub</a>
+        <a href="files.html" class="btn btn-primary">Next: First Files →</a>
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>
