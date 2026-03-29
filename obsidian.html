@@ -3,11 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lesson 2: Obsidian</title>
+  <title>Obsidian</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono&display=swap" rel="stylesheet" />
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
     body { font-family: 'Inter', sans-serif; background: #fff; color: #1a1a1a; }
 
     .course-nav {
@@ -21,117 +20,82 @@
       white-space: nowrap;
     }
 
-    .lesson {
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 500;
-      color: #aaa;
-      padding: 6px 12px;
-      border-radius: 20px;
-      transition: color 0.15s, background 0.15s;
-    }
-
+    .lesson { text-decoration: none; font-size: 13px; font-weight: 500; color: #aaa; padding: 6px 12px; border-radius: 20px; transition: color 0.15s, background 0.15s; flex-shrink: 0; }
     .lesson:hover { color: #444; background: #f5f5f5; }
     .lesson.active { color: #d97757; background: #fff5f1; }
 
-    .page {
-      max-width: 580px;
-      margin: 0 auto;
-      padding: 80px 28px 100px;
+    .page { max-width: 580px; margin: 0 auto; padding: 80px 28px 100px; }
+    .page-header { margin-bottom: 40px; }
+    .page-header h1 { font-size: 30px; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 8px; }
+    .page-header p { color: #888; font-size: 16px; line-height: 1.6; }
+
+    .explainer {
+      background: #f7f6f3;
+      border-radius: 12px;
+      padding: 20px 22px;
+      margin-bottom: 48px;
+      font-size: 15px;
+      color: #555;
+      line-height: 1.7;
     }
 
-    .page-header { margin-bottom: 56px; }
-
-    .page-header h1 {
-      font-size: 30px;
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      margin-bottom: 8px;
-    }
-
-    .page-header p { color: #888; font-size: 16px; }
+    .explainer b { color: #1a1a1a; }
 
     .step { margin-bottom: 48px; }
-
-    .step-head {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 16px;
-    }
-
-    .num {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: #d97757;
-      color: #fff;
-      font-weight: 600;
-      font-size: 15px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
+    .step-head { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+    .num { width: 36px; height: 36px; border-radius: 50%; background: #d97757; color: #fff; font-weight: 600; font-size: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .step h2 { font-size: 18px; font-weight: 600; }
-
-    .step ol {
-      list-style: none;
-      padding-left: 50px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
+    .step ol { list-style: none; padding-left: 50px; display: flex; flex-direction: column; gap: 10px; }
     .step ol li { font-size: 15px; color: #444; line-height: 1.6; }
     .step ol li b { color: #1a1a1a; }
 
     hr { border: none; border-top: 1px solid #eee; margin: 8px 0 48px; }
 
-    .note {
-      margin-left: 50px;
-      margin-top: 12px;
-      padding: 12px 14px;
-      background: #fff8f5;
-      border-left: 3px solid #d97757;
-      border-radius: 0 6px 6px 0;
-      font-size: 14px;
-      color: #666;
-      line-height: 1.6;
-    }
+    .cmd { background: #1a1a1a; border-radius: 8px; padding: 13px 16px; margin: 12px 0 4px; display: flex; align-items: center; gap: 10px; }
+    .cmd span { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #f0eee6; flex: 1; word-break: break-all; }
+    .copy { background: rgba(255,255,255,0.1); border: none; color: rgba(255,255,255,0.5); padding: 5px 10px; border-radius: 5px; font-size: 12px; cursor: pointer; font-family: inherit; flex-shrink: 0; }
+    .copy:hover { background: rgba(255,255,255,0.18); color: #fff; }
+    .copy.ok { background: #2d9e6b; color: #fff; }
 
+    code { font-family: 'JetBrains Mono', monospace; font-size: 12px; background: #f2f0ec; padding: 2px 6px; border-radius: 4px; color: #444; }
+
+    .note { margin-left: 50px; margin-top: 12px; padding: 12px 14px; background: #fff8f5; border-left: 3px solid #d97757; border-radius: 0 6px 6px 0; font-size: 14px; color: #666; line-height: 1.6; }
     .note b { color: #1a1a1a; }
 
-    .done {
-      background: #1a1a1a;
-      border-radius: 16px;
-      padding: 48px 36px;
-      text-align: center;
-      color: #fff;
-    }
-
-    .done h2 { font-size: 22px; font-weight: 600; margin-bottom: 8px; }
-    .done h2 span { color: #d97757; }
-    .done p { color: rgba(255,255,255,0.4); font-size: 14px; margin-bottom: 28px; }
-
-    .nav-btns {
+    /* back-and-forth diagram */
+    .flow {
+      margin: 16px 0 4px;
+      margin-left: 50px;
+      background: #f7f6f3;
+      border-radius: 10px;
+      padding: 18px 20px;
       display: flex;
+      align-items: center;
       justify-content: center;
       gap: 12px;
       flex-wrap: wrap;
+      font-size: 14px;
     }
 
-    .btn {
-      display: inline-block;
-      text-decoration: none;
-      padding: 12px 24px;
+    .flow-box {
+      background: #fff;
+      border: 1px solid #e0deda;
       border-radius: 8px;
-      font-size: 15px;
-      font-weight: 500;
-      transition: background 0.15s;
+      padding: 10px 16px;
+      font-weight: 600;
+      color: #1a1a1a;
+      font-size: 14px;
+      text-align: center;
     }
 
+    .flow-arrow { color: #d97757; font-size: 18px; font-weight: 700; }
+
+    .done { background: #1a1a1a; border-radius: 16px; padding: 48px 36px; text-align: center; color: #fff; }
+    .done h2 { font-size: 22px; font-weight: 600; margin-bottom: 8px; }
+    .done h2 span { color: #d97757; }
+    .done p { color: rgba(255,255,255,0.4); font-size: 14px; margin-bottom: 28px; }
+    .nav-btns { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+    .btn { display: inline-block; text-decoration: none; padding: 12px 24px; border-radius: 8px; font-size: 15px; font-weight: 500; transition: background 0.15s; }
     .btn-primary { background: #d97757; color: #fff; }
     .btn-primary:hover { background: #c6613f; }
     .btn-ghost { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.6); }
@@ -152,8 +116,12 @@
 
   <main class="page">
     <div class="page-header">
-      <h1>Download Obsidian</h1>
-      <p>Your note-taking app for keeping track of everything you learn.</p>
+      <h1>Obsidian</h1>
+      <p>A really cool app — but its main job is simple.</p>
+    </div>
+
+    <div class="explainer">
+      When Claude creates a <code>.md</code> file, it's just text — your computer stores it as raw characters with symbols like <b>#</b> and <b>-</b>. Obsidian acts as a <b>translator</b>: it reads those symbols and turns them into something that actually looks nice — headings, bullets, bold text. You can also write notes in Obsidian and it saves them as <code>.md</code> files, which means Claude can read them right back. It's a two-way street between you and your files.
     </div>
 
     <div class="step">
@@ -166,7 +134,7 @@
         <li>Open the downloaded file and drag <b>Obsidian</b> into your Applications folder</li>
         <li>Open it (right-click → Open the first time)</li>
       </ol>
-      <div class="note">Obsidian is free. You don't need an account to use it.</div>
+      <div class="note">Free. No account needed.</div>
     </div>
 
     <hr>
@@ -174,14 +142,14 @@
     <div class="step">
       <div class="step-head">
         <div class="num">2</div>
-        <h2>Create a Vault</h2>
+        <h2>Open your projects folder as a vault</h2>
       </div>
       <ol>
-        <li>When Obsidian opens, it'll ask you to create a vault — think of this as a folder where all your notes live</li>
-        <li>Click <b>Create new vault</b></li>
-        <li>Give it a name (like <b>My Notes</b>) and pick somewhere on your computer to save it</li>
-        <li>Click <b>Create</b></li>
+        <li>When Obsidian opens, click <b>Open folder as vault</b></li>
+        <li>Navigate to your Desktop and select your <b>projects</b> folder</li>
+        <li>Click <b>Open</b></li>
       </ol>
+      <div class="note">A "vault" is just Obsidian's word for a folder it's reading. By pointing it at <b>projects</b>, every <code>.md</code> file Claude creates in any of your projects will automatically show up here — beautifully formatted, no extra steps.</div>
     </div>
 
     <hr>
@@ -189,19 +157,43 @@
     <div class="step">
       <div class="step-head">
         <div class="num">3</div>
-        <h2>Make Your First Note</h2>
+        <h2>Try it: create a file with Claude, edit in Obsidian</h2>
       </div>
       <ol>
-        <li>Click the <b>pencil icon</b> or press <b>Cmd + N</b> to create a new note</li>
-        <li>Give it a title — try <b>Claude Code Notes</b></li>
-        <li>Start typing anything. This is your space to write down what you learn.</li>
+        <li>In VS Code, create a new folder inside <b>projects</b> called <b>test</b> and open it</li>
+        <li>Click <b>⚡</b> to open Claude and type:</li>
       </ol>
-      <div class="note">Obsidian saves everything automatically. No save button needed.</div>
+      <div class="cmd" style="margin-left:50px;">
+        <span>create a file called notes.md with a short list of healthy meal ideas</span>
+        <button class="copy" onclick="cp(this,'create a file called notes.md with a short list of healthy meal ideas')">copy</button>
+      </div>
+      <ol start="3" style="margin-top:6px;">
+        <li>Switch to Obsidian — you'll see <b>test/notes.md</b> appear in the sidebar. Click it to open it.</li>
+        <li>It looks nice, right? Now add a note to any item by typing something in brackets, like: <code>[make this vegetarian]</code> or <code>[add a recipe for this one]</code></li>
+        <li>Go back to VS Code, open Claude, and type:</li>
+      </ol>
+      <div class="cmd" style="margin-left:50px;">
+        <span>look at notes.md and fix anything I've written in brackets</span>
+        <button class="copy" onclick="cp(this,'look at notes.md and fix anything I\'ve written in brackets')">copy</button>
+      </div>
+      <ol start="6" style="margin-top:6px;">
+        <li>Watch Obsidian update in real time as Claude edits the file</li>
+      </ol>
+
+      <div class="flow" style="margin-top:20px;">
+        <div class="flow-box">📝 You write in Obsidian</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box">💾 Saved as .md</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box">🤖 Claude reads it</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box">✨ Obsidian shows changes</div>
+      </div>
     </div>
 
     <div class="done">
-      <h2>That's <span>Obsidian.</span></h2>
-      <p>You now have a place to keep notes as you go. On to the last step.</p>
+      <h2>That's the <span>loop.</span></h2>
+      <p>You and Claude, back and forth through your files. Obsidian just makes it readable.</p>
       <div class="nav-btns">
         <a href="claude-code.html" class="btn btn-ghost">← Claude Code</a>
         <a href="github.html" class="btn btn-primary">Next: GitHub →</a>
@@ -209,6 +201,19 @@
     </div>
 
   </main>
+
+  <script>
+    function cp(btn, text) {
+      navigator.clipboard.writeText(text).catch(() => {
+        const t = document.createElement('textarea');
+        t.value = text; document.body.appendChild(t); t.select();
+        document.execCommand('copy'); document.body.removeChild(t);
+      });
+      btn.textContent = 'copied!';
+      btn.classList.add('ok');
+      setTimeout(() => { btn.textContent = 'copy'; btn.classList.remove('ok'); }, 2000);
+    }
+  </script>
 
 </body>
 </html>
